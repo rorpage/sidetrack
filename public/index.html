@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sidetrack: route around slow trains</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html, body, #map { height: 100%; margin: 0; }
+    .leaflet-container { background: #e5e7eb; }
+  </style>
+</head>
+<body class="h-full">
+  <div class="h-full flex flex-col">
+    <header class="bg-slate-900 text-white px-4 py-3 flex items-center justify-between shadow-md z-10">
+      <div class="flex items-center gap-2">
+        <span class="text-2xl">🚦</span>
+        <h1 class="text-lg font-semibold">Sidetrack</h1>
+        <span class="hidden sm:inline text-slate-400 text-sm">route around slow trains</span>
+      </div>
+      <status-legend></status-legend>
+    </header>
+
+    <main class="flex-1 relative">
+      <div id="map" class="absolute inset-0"></div>
+      <route-panel class="absolute top-4 left-4 z-[1000]"></route-panel>
+    </main>
+  </div>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
