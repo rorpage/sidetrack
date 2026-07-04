@@ -89,6 +89,18 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
 }).addTo(map);
 
+// Recenter on the user's location if they grant permission; keep the
+// Chicago default otherwise (denied, unsupported, or timed out).
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      map.setView([position.coords.latitude, position.coords.longitude], 14);
+    },
+    () => {},
+    { timeout: 8000 }
+  );
+}
+
 const crossingLayer = L.layerGroup().addTo(map);
 const crossingMarkers = new Map(); // crossingId -> { marker, lat, lon, status }
 let routeLine = null;
