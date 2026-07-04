@@ -4,6 +4,9 @@
   "description": "Routes you around slow traffic near railroad crossings.",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "dev": "vercel dev",
     "test": "vitest run",
